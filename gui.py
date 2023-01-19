@@ -1,8 +1,12 @@
-import time
+import time, os
 
 import PySimpleGUI as psg
 
 from helper_functions import get_todos, write_todos
+
+if not os.path.exists('todos.txt'):
+    with open('todos.txt', 'w'):
+        pass
 
 psg.theme('DarkGreen4')
 
