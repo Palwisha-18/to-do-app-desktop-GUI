@@ -5,8 +5,14 @@ label = psg.Text("Enter a to-do")
 input_box = psg.InputText(tooltip="Enter todo", key='todo')
 add_button = psg.Button("Add")
 
+list_box = psg.Listbox(values=get_todos(),
+                       key='todos',
+                       enable_events=True,
+                       size=[45, 10])
+edit_button = psg.Button("Edit")
+
 window = psg.Window("To-Do App",
-                    layout=[[label], [input_box, add_button]],
+                    layout=[[label], [input_box, add_button], [list_box, edit_button]],
                     font=('Helvetica', 20))
 
 while True:
@@ -18,8 +24,25 @@ while True:
         to_dos = get_todos()
         to_dos.append(new_to_do)
         write_todos(to_dos)
+        window['todos'].update(values=to_dos)
 
-    elif psg.WIN_CLOSE:
+    elif event == 'Edit':
+
+        to_do_to_edit = values['todos'][0]
+        new_to_do = values['todo']
+
+        to_dos = get_todos()
+        index = to_dos.index(to_do_to_edit)
+        to_dos[index] = new_to_do
+
+        write_todos(to_dos)
+        window['todos'].update(values=to_dos)
+
+    elif event == 'todos':
+
+        window['todo'].update(value=values['todos'][0])
+
+    elif psg.WIN_CLOSED:
         break
 
 window.close()
