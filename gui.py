@@ -1,4 +1,5 @@
-import time, os
+import os
+import time
 
 import PySimpleGUI as psg
 
