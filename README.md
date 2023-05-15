@@ -6,13 +6,12 @@ This is a simple desktop application for managing to-do lists. It allows users t
 
 This application requires Python 3.5 or higher to be installed on your system, as well as the following packages:
 
-- PyQt5
-- SQLite3
+- PySimpleGUI
 
 You can install these packages using pip, the Python package installer:
 
 ```
-pip install PyQt5 sqlite3
+pip install pysimplegui
 ```
 
 ## Usage
